@@ -52,7 +52,12 @@
       <div class="container documents">
 
         <div class="example">
-          <h2 class="example-title">Go pick up a book!</h2>
+        <h2 class="example-title">Go pick up a book! Like this: <% @data.each do |data| %></h2>
+	<h2 class="example-title"><%= data.isbn %></h2>
+	<h2 class="example-title"><%= data.name %></h2>
+	<h2 class="example-title"><%= data.author %></h2>
+	<% end %>
+	
           <div class="row">
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail">
