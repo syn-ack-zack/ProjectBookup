@@ -1,0 +1,39 @@
+.whiteHeader {
+	color: white ;
+	text-align: center;
+	margin: 0;
+	padding-top: 25px;
+	font-size: 48pt;
+}
+
+.aquaHeader {
+	color: #3BAFDA ;
+	text-align: center;
+	margin: 0;
+	padding-top: 25px;
+	font-size: 48pt;
+}
+
+.subheader {
+	color: white;
+	font-weight: 300;
+	text-align: center;
+	font-size: 36pt;
+}
+
+.subheaderaqua {
+	color: #3BAFDA;
+	font-weight: 300;
+	text-align: center;
+	font-size: 36pt;
+}
+
+.aquaground {
+	background-color: #3BAFDA;
+	margin: 0 auto;
+	height: 325px;
+}
+
+.bold {
+	font-weight: 600;
+}
