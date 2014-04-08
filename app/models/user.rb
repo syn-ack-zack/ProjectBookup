@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-    recommends :books, :authors
+    recommends :books
 end
