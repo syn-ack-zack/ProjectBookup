@@ -6,6 +6,8 @@ Bookup::Application.routes.draw do
   resources :books, :except => [:index, :destroy]
   resources :users, :except => [:index, :destroy]
 
+  root "users#splash"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
