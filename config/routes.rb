@@ -3,13 +3,11 @@ Bookup::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-<<<<<<< HEAD
-  resources :books, :except => [:index, :destroy]
-  resources :users, :except => [:index, :destroy]
-=======
   resources :books,:except => [:index, :destroy]
   resources :users,:except => [:index, :destroy]
->>>>>>> 8aaf4f142d1b9161820ac8c8363db8ee41a362f1
+
+
+  root "users#splash"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

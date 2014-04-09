@@ -1,7 +1,8 @@
 .whiteHeader {
 	color: white ;
 	text-align: center;
-	margin: 0;
+	margin: 30px;
+	margin-top: 0px;
 	padding-top: 25px;
 	font-size: 48pt;
 }
@@ -26,6 +27,7 @@
 	font-weight: 300;
 	text-align: center;
 	font-size: 36pt;
+	margin: 30px;
 }
 
 .aquaground {
@@ -36,4 +38,11 @@
 
 .bold {
 	font-weight: 600;
+}
+
+
+.centerdamnbutton {
+	margin: 20px auto;
+	position: relative;
+	text-align: center;
 }
