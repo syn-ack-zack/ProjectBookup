@@ -1,0 +1,31 @@
+<div class="docs-header">
+      <!--nav-->
+      <nav class="navbar navbar-default navbar-custom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="nav-link" href="#">Bookup</a></li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "About", {:controller => 'users', :action => 'splash'},  
+                :class =>  splash %>
+              </li>
+              <li><%= link_to "Log in", {:controller => 'users', :action => 'login'} ,  
+                :class =>  login %>
+              </li>
+              <li><%= link_to "Sign Up", {:controller => 'users', :action => 'signup'} ,  
+                :class =>  signup %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</div>
