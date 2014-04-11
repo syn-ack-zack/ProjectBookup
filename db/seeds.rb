@@ -118,3 +118,11 @@ User.create(userid: 'BrindaScally', password: 'CaWu5U3c', favbook: 'Journey to t
 User.create(userid: 'MattRitter', password: 'ASCIIDIK', favbook: 'The Cat in the Hat', favauthor: 'Dr. Seuss')
 User.create(userid: 'JadwigaTosi', password: 'wmYa6VNc', favbook: 'The Canterbury Tales', favauthor: 'Geoffrey Chaucer')
 User.create(userid: 'SherikaPrado', password: 'p6LUaDDH', favbook: 'Stories', favauthor: 'Anton Chekhov')
+users = User.all
+users.each do |user|
+	books = Array.new(Book.all)
+	10.times do
+		user.like(books.delete(books.sample))
+		user.unlike(books.delete(books.sample))
+	end 
+end 

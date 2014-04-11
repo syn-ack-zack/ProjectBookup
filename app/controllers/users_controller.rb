@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 	def create
-
 	end
 	def new
 	end
@@ -11,12 +10,6 @@ class UsersController < ApplicationController
 	def update
 	end
 	def splash
-	end
-	def userPage
-		@username = params[:usr]
-		@password = params[:pswd]
-	end
-	def login
 	end
 	def signup
 	end

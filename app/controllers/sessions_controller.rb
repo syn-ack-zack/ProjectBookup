@@ -3,12 +3,13 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(name: params[:session][:username])
-        if user && user.password == params[:session][:password]
-            @user = user
-            render 'users/profile'
-        else
+        user = User.authenticate(params[:session][:username], params[:session][:password])
+        if user
+        	session[:remember_token] = user.id
             render 'new'
+        else
+        	flash.now[:error] = 'Invalid username or password'
+            render 'users/signup'
         end
     end
 
