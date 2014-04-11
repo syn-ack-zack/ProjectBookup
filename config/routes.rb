@@ -9,6 +9,12 @@ Bookup::Application.routes.draw do
 
   root "users#splash"
 
+  get 'login' => 'users#login'
+
+  get 'signup' => 'users#signup'
+
+  get 'about' => 'users#splash'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

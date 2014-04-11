@@ -11,4 +11,8 @@ class UsersController < ApplicationController
 	end
 	def splash
 	end
+	def login
+	end
+	def signup
+	end
 end
