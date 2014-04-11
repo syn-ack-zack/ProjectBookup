@@ -15,6 +15,8 @@ Bookup::Application.routes.draw do
 
   get 'about' => 'users#splash'
 
+  get 'profile' => 'users#profile'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
