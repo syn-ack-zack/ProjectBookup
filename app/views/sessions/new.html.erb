@@ -6,45 +6,14 @@
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="../../public/assets/stylesheets/site.min.css">
+    <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
 
-    <link rel="stylesheet" type="text/css" href="../../public/assets/stylesheets/style.css">
-
-    <script type="text/javascript" src="js/site.min.js"></script>
+    <%=javascript_include_tag "site.min"%>
 
   </head>
   <body style="background-color: #f1f2f6;">
-    <div class="docs-header">
-      <!--nav-->
-      <nav class="navbar navbar-default navbar-custom" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a class="nav-link" href="#">Bookup</a></li>
-            </ul>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "About", {:controller => 'users', :action => 'splash' },
-                :class => 'nav-link' %>
-              </li>
-              <li><%= link_to "Log in", {:controller => 'sessions', :action => 'new'} ,
-                :class => 'current nav-link' %>
-              </li>
-              <li><%= link_to "Sign Up", {:controller => 'users', :action => 'new'} ,
-                :class => 'nav-link' %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      </div>
+    <%= render :partial => 'menu',:locals => {:splash => 'nav-link',:login => 'current nav-link',:signup => 'nav-link'}%>
 
       <!--header-->
       <div class="aquaground">
