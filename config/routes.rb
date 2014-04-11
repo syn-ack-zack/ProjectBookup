@@ -9,15 +9,14 @@ Bookup::Application.routes.draw do
 
   root "users#splash"
 
-  get 'login' => 'sessions#new', via: 'get'
+  get 'login' => 'sessions#login', via: 'get'
 
   get 'logout' => 'sessions#destroy', via: 'delete'
 
-  get 'signup' => 'users#new', via: 'get'
 
   get 'profile' => 'users#show', via: 'get'
 
- 
+  get 'signup' => 'users#signup', via: 'get' 
 
   get 'profile' => 'users#profile'
 
