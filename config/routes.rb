@@ -5,15 +5,19 @@ Bookup::Application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :books,:except => [:index, :destroy]
   resources :users,:except => [:index, :destroy]
-
+  resources :sessions, :only => [:new, :create, :destroy]
 
   root "users#splash"
 
-  get 'login' => 'users#login'
+  get 'login' => 'sessions#new', via: 'get'
 
-  get 'signup' => 'users#signup'
+  get 'logout' => 'sessions#destroy', via: 'delete'
+
+  get 'signup' => 'users#new', via: 'get'
 
   get 'about' => 'users#splash'
+
+  get 'userPage' => 'users#userPage'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
