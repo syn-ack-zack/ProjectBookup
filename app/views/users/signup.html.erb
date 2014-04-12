@@ -11,7 +11,7 @@
 
   </head>
   <body style="background-color: #f1f2f6;">
-      
+
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
 
       <!--header-->
@@ -22,7 +22,47 @@
       <br>
       <br>
       <div class="container">
-        <form id = "login">
+        <%= form_for(:user, url: users_path) do |f| %>
+          <%= f.label :username %>
+          <%= f.text_field :username, class: "form-control"%>
+
+          <br>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Confirm Password" %>
+          <%= f.password_field :confirmpassword, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Favorite Book" %>
+          <%= f.text_field :favbook, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Favorite Author" %>
+          <%= f.text_field :favauthor, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Favorite Genre" %>
+          <%= f.text_field :favgenre, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Tell Us About You!" %>
+          <%= f.text_area :aboutme, class: "form-control"%>
+
+          <br>
+
+          <%= f.submit "Create Account", class: "btn btn-primary" %>
+        <% end %>
+
+        <%= debug(params) if Rails.env.development? %>
+        <!-- <form id = "login">
           <input name = "usr" type="text" class="form-control" placeholder="Username">
           <br>
           <input name = "pswd" type="password" class="form-control" placeholder="Password">
@@ -36,8 +76,8 @@
           <input name = "genre" type="text" class="form-control" placeholder="Favorite Genre">
           <br>
           <input type="submit" value="Log In" class="btn btn-primary">
-        </form>
-        
+        </form> -->
+
       </div>
   </body>
 </html>
