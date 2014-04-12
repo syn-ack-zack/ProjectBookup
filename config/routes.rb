@@ -13,9 +13,6 @@ Bookup::Application.routes.draw do
 
   get 'logout' => 'sessions#destroy', via: 'delete'
 
-
-  get 'profile' => 'users#show', via: 'get'
-
   get 'signup' => 'users#signup', via: 'get' 
 
   get 'profile' => 'users#profile'
