@@ -16,14 +16,14 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li>
-              <% if User.find_by(session[:remember_token]) != nil%>
+              <% if session[:remember_token] != nil %>
               <%= link_to "About", {:controller => 'users', :action => 'splash'},
                 :class =>  splash %>
               </li>
               <li><%= link_to "Profile", {:controller => 'users', :action => 'profile'} ,
                 :class =>  login %>
               </li>
-              <li><%= link_to "Sign Out", {:controller => 'sessions', :action => 'destroy'} ,
+              <li><%= link_to "Sign Out", {:controller => 'sessions', :action => 'logout'} ,
                 :class =>  signup %>
               </li>
               <% else %>

@@ -7,14 +7,14 @@ class SessionsController < ApplicationController
         user = User.find_by(userid: params[:session][:username])
         if user && user.password == params[:session][:password]
         	session[:remember_token] = user.id
-            render 'login'
+            render 'users/profile'
         else
         	flash.now[:error] = 'Invalid username or password'
             render 'users/signup'
         end
     end
 
-    def destroy
+    def logout
         session[:remember_token] = nil
         render 'users/splash'
     end
