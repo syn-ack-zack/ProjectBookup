@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 			:favbook => params[:user][:favbook], :favauthor => params[:user][:favauthor], \
 			:favgenre => params[:user][:favgenre], :aboutme => params[:user][:aboutme])
 		user = User.find_by(userid: params[:user][:username])
-		puts user.userid
 		session[:remember_token] = user.id
 		render 'profile'
 	end

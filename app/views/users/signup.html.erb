@@ -14,7 +14,6 @@
 
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
 
-      <!--header-->
       <div class="aquaground">
         <h1 class = "whiteHeader">Thank you for trying Bookup</h1>
         <h4 class="subheader">Lets find you a book</h4>
@@ -62,21 +61,7 @@
         <% end %>
 
         <%= debug(params) if Rails.env.development? %>
-        <!-- <form id = "login">
-          <input name = "usr" type="text" class="form-control" placeholder="Username">
-          <br>
-          <input name = "pswd" type="password" class="form-control" placeholder="Password">
-          <br>
-          <input name = "pswd" type="password" class="form-control" placeholder="Password one more time...">
-          <br>
-          <input name = "book" type="text" class="form-control" placeholder="Favorite Book">
-          <br>
-          <input name = "author" type="text" class="form-control" placeholder="Favorite AUthor">
-          <br>
-          <input name = "genre" type="text" class="form-control" placeholder="Favorite Genre">
-          <br>
-          <input type="submit" value="Log In" class="btn btn-primary">
-        </form> -->
+
 
       </div>
   </body>
