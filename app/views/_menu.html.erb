@@ -10,7 +10,10 @@
               <span class="icon-bar"></span>
             </button>
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="nav-link" href="#">Bookup</a></li>
+              <li>
+                <%= link_to "Bookup", {:controller => 'users', :action => 'splash'},
+                :class =>  "nav-link" %>
+              </li>
             </ul>
           </div>
           <div class="collapse navbar-collapse">
