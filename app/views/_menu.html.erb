@@ -11,9 +11,23 @@
             </button>
             <ul class="nav navbar-nav navbar-right">
               <li>
+                <% if session[:remember_token] == nil %>
                 <%= link_to "Bookup", {:controller => 'users', :action => 'splash'},
                 :class =>  "nav-link" %>
               </li>
+              <%else%>
+              <li>
+                   <div class="input-group form-search">
+                      <input class="form-control search-query" type="text"> 
+                      </input>
+                      <span class="input-group-btn">
+                          <button class="btn btn-primary" data-type="last" type="submit">
+                             Search
+                          </button>
+                      </span>
+                   </div>
+              </li>
+              <%end%>
             </ul>
           </div>
           <div class="collapse navbar-collapse">
