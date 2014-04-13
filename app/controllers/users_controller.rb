@@ -27,8 +27,10 @@ def create
 	end
 	def profile
 		user = User.find_by(id: session[:remember_token]);
+		Recommendable::Helpers::Calculations.update_similarities_for(user.id)
+		Recommendable::Helpers::Calculations.update_recommendations_for(user.id)
 		puts "USER IS #{user.userid}"
-		@books = user.recommended_books;
+		@books = user.recommended_books 12
 		# @user.recommended_books(10, 0)
 	end
 
