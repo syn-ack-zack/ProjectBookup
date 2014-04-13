@@ -23,11 +23,13 @@
           <%= @book.author %>
           </h4>
         <div class="cover">
-          Cover of book here
+          <img src= <%= "http://covers.openlibrary.org/b/isbn/" + @book.isbn + "-L.jpg"%>>
         </div>
         <div class="topic__infos">
           <div class="wiki">
-            Wikipedia data here...
+            <p> <%= @bookDescription %></p>
+            <br>
+            <p> <%= @authorDescription %></p>
           </div>
         </div>
 
