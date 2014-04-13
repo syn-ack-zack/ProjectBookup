@@ -7,10 +7,11 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
     <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
 
   </head>
-  <body style="background-color: #f1f2f6;">
+  <body>
 
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
 
