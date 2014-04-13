@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 	end
 	def new
 	end
+	# Displays the boko
 	def show 
 		@book = Book.find(params[:id])
 	end

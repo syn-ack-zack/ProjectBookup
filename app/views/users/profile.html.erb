@@ -7,22 +7,21 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
     <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
+    <%=javascript_include_tag "actions"%>
 
   </head>
-  <body style="background-color: #f1f2f6">
+  <body>
 
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
-      <!--header-->
-      <div class="topic">
-        <div class="container" style="color:black">
-          <h3>Bookup</h3>
-          <h4>The simple way to find your next read.</h4>
-        </div>
+      
+
+      <!--Top-->
+      <div class="aquaground">
+          <h3 class="whiteHeader">Your Recommendations</h3>
+          <h4 class="subheader">The simple way to find your next read.</h4>
         <div class="topic__infos">
-          <div class="container">
-            Bootflat offers over a dozen reusable components, which can be combined with each other. 
-          </div>
         </div>
       </div>
     </div>
@@ -31,180 +30,38 @@
       ================================================== -->
       <div class="container documents">
 
-        <div class="example">
-          <h2 class="example-title">Go pick up a book!</h2>
-          <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-1.jpg" >
-                  <div class="caption text-center">
-                    <h3>BOOK 1</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-2.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 2</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-3.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 3</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-4.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 4</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!-- Thumbnails print -->
+  
 
-          <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-1.jpg" >
-                  <div class="caption text-center">
-                    <h3>BOOK 1</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-2.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 2</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-3.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 3</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-4.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 4</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <!-- <div class="row"> -->
+      
+      <% count = 0 %>
+      <% @books.each do |x| %>
 
-          <div class="row">
-              <div class="col-sm-6 col-md-3">
+      <% if (count % 4 == 0) %>
+      <div class="row">
+      <% end %>
+              <div id = "b1thumb" class="col-sm-6 col-md-3">
                 <div class="thumbnail">
                   <img class="img-rounded" src="img/thumbnail-1.jpg" >
                   <div class="caption text-center">
-                    <h3>BOOK 1</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
+                    <h3> <%= x.name %> </h3>
+                    <p> <%= x.author %> </p>
+                    <p><a class="btn btn-success" role="button">I like it!</a>
+                    <a name = "nolike" class="btn btn-danger" role="button">No Thanks</a>
+                    </p>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-2.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 2</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-3.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 3</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                  <img class="img-rounded" src="img/thumbnail-4.jpg">
-                  <div class="caption text-center">
-                    <h3>BOOK 4</h3>
-                    <p>author...</p>
-                    <p><a href="#" class="btn btn-general" role="button">Review</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
+      <% count += 1 %>
+
+      <% if (count % 4 == 0) %>
+      </div>
+      <% end %>
+
+      <% end %>
+
       <!-- Footer
       ================================================== -->
-      <div class="example">
-        <h2 class="example-title">Footers</h2>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="footer">
-              <div class="container">
-                <div class="clearfix">
-                  <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" />Bootflat</a></div>
-                  <dl class="footer-nav">
-                    <dt class="nav-title">PORTFOLIO</dt>
-                    <dd class="nav-item"><a href="#">Web Design</a></dd>
-                    <dd class="nav-item"><a href="#">Branding &amp; Identity</a></dd>
-                    <dd class="nav-item"><a href="#">Mobile Design</a></dd>
-                    <dd class="nav-item"><a href="#">Print</a></dd>
-                    <dd class="nav-item"><a href="#">User Interface</a></dd>
-                  </dl>
-                  <dl class="footer-nav">
-                    <dt class="nav-title">ABOUT</dt>
-                    <dd class="nav-item"><a href="#">The Company</a></dd>
-                    <dd class="nav-item"><a href="#">History</a></dd>
-                    <dd class="nav-item"><a href="#">Vision</a></dd>
-                  </dl>
-                  <dl class="footer-nav">
-                    <dt class="nav-title">GALLERY</dt>
-                    <dd class="nav-item"><a href="#">Flickr</a></dd>
-                    <dd class="nav-item"><a href="#">Picasa</a></dd>
-                    <dd class="nav-item"><a href="#">iStockPhoto</a></dd>
-                    <dd class="nav-item"><a href="#">PhotoDune</a></dd>
-                  </dl>
-                  <dl class="footer-nav">
-                    <dt class="nav-title">CONTACT</dt>
-                    <dd class="nav-item"><a href="#">Basic Info</a></dd>
-                    <dd class="nav-item"><a href="#">Map</a></dd>
-                    <dd class="nav-item"><a href="#">Conctact Form</a></dd>
-                  </dl>
-                </div>
-                <div class="footer-copyright text-center">Copyright &copy; 2014 Flathemes.All rights reserved.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
   </body>
 </html>
