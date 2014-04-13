@@ -44,8 +44,9 @@ class WikipediaScraper
                 firstPara.gsub!(/(.*?\}\})/, '')
                 firstPara = firstPara.force_encoding("iso-8859-1").encode("utf-8")
                 firstPara.gsub!(/ref&gt.*?ref&gt;/, '')
+                firstPara.gsub!(/\(.*?\)/, '')
                 encodedPara = HTMLEntities.new.decode firstPara
-                firstPara.gsub!(/(ref&gt.*?ref&gt;)/, '')
+
                 return encodedPara
             }
             return "No data"
