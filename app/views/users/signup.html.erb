@@ -22,6 +22,10 @@
       <br>
       <br>
       <div class="container">
+        <p id="notice"><%= notice %></p>
+
+        <br>
+
         <%= form_for(:user, url: users_path) do |f| %>
           <%= f.label :username %>
           <%= f.text_field :username, class: "form-control"%>

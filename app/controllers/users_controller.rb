@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 	def create
 		if !(params[:user][:password] == params[:user][:confirmpassword])
-			flash.now[:error] = "Password and password confirmation did not match"
+			flash[:notice] = "Password and password confirmation did not match"
 			render 'users/signup'
+      return
     end
 
 		user = User.new(:userid => params[:user][:username], :password => params[:user][:password],  \
@@ -12,12 +13,16 @@ class UsersController < ApplicationController
     user.save
 		session[:remember_token] = user.id
 		render 'profile'
+      return
     elsif user.already_exists(user.userid, user.password) == 0
-      render 'users/signup'
       flash[:notice] = "Username already exists"
+      render 'users/signup'
+      flash[:notice] = ""
+      return
     else
-      render 'sessions/login'
       flash[:notice] = "User already exists!"
+      render 'sessions/login'
+      return
       end
 	end
 	def new
