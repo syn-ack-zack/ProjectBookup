@@ -27,9 +27,8 @@
         <h1 class="aquaHeader">How Do We Do It?</h1>
         <h4 class="subheaderaqua">All you have to do is tell us the books you
         <span class="bold">Like</span> or <span class="bold">Dislike</span>!</h4>
-
         <div class="centerdamnbutton">
-          <%= button_to "Want to try it out?", signup_path, :class => "btn btn-primary", :method => :get%>
+          <%= button_to "Want to try it out?",session[:remember_token] ? profile_path : signup_path, :class => "btn btn-primary", :method => :get%>
         </div>
       </div>
 
