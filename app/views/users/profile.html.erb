@@ -7,17 +7,18 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
     <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
 
   </head>
-  <body style="background-color: #f1f2f6">
+  <body>
 
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
       
 
       <!--Top-->
       <div class="aquaground">
-          <h3 class="whiteHeader">Recommendations</h3>
+          <h3 class="whiteHeader">Your Recommendations</h3>
           <h4 class="subheader">The simple way to find your next read.</h4>
         <div class="topic__infos">
         </div>
@@ -33,7 +34,7 @@
 
       <!-- <div class="row"> -->
       
-      <% @books.each do |x| %>
+      <% 5.times do |x| %>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail">
                   <img class="img-rounded" src="img/thumbnail-1.jpg" >
