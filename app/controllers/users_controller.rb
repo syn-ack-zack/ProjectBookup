@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 		User.create(:userid => params[:user][:username], :password => params[:user][:password],  \
 			:favbook => params[:user][:favbook], :favauthor => params[:user][:favauthor], \
 			:favgenre => params[:user][:favgenre], :aboutme => params[:user][:aboutme])
-		user = User.find_by(userid: params[:user][:username])
+		@user = User.find_by(userid: params[:user][:username])
 		puts user.userid
 		session[:remember_token] = user.id
 		render 'profile'
@@ -23,6 +23,14 @@ class UsersController < ApplicationController
 	def splash
 	end
 	def signup
-
 	end
+	def profile
+		puts "USER IS #{@user}" 
+		@books = [1,2,3,4,5,6,7,8,9,10,11,12]
+		# @user.recommended_books(10, 0)
+	end
+
+	def like_button (book_id) 
+	end
+
 end
