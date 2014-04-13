@@ -1,20 +1,24 @@
 require 'spec_helper'
 
 describe "in the  user controllers," do
+
    subject{ page } 
 
+   #PROFILE PAGE
    describe "the profile page" do 
       it "should have a valid link" do 
          visit '/profile'
       end
+      #TODO ...um start this
    end
 
+   #SIGN UP PAGE
    describe "the sign up page" do 
       before { visit '/signup'}
       it "should have a valid link " do 
       end
 
-      names = ['usr', 'pswd', 'pswd', 'book', 'author', 'genre']
+      id = ['user_username', 'user_password', 'user_confirmpassword', 'user_favbook', 'user_favauthor','user_favgenre', 'user_aboutme']
       types = ['text', 'password', 'password', 'text','text', 'text', 'submit']
       classes = ['form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'btn btn-primary'  ]
 
@@ -23,7 +27,7 @@ describe "in the  user controllers," do
       it { should have_content 'Thank you for trying Bookup'}
       it { should have_content 'Lets find you a book'}
       6.times do | i |
-         it { should have_xpath "//form/input[#{i + 1}][@name = '#{names[i]}']" }
+         it { should have_xpath "//form/input[#{i + 1}][@id = '#{id[i]}']" }
       end 
 
       7.times do |i|
@@ -37,10 +41,11 @@ describe "in the  user controllers," do
       #Link tests
       it "should create the correct URL when you hit 'login'" do
          click_link 'Log in'
-         fields = ['Username', 'Password','Password one more time...', 'Favorite Book', 'Favorite Author', 'Favorite Genre']
-         fill = ['ian_kropp', 'capybara', 'capybara', 'capybara', 'Blink', 'Mark Twain','mystery']
+         fields = ['Username', 'Password', 'user[confirmpassword]']
+         fill = ['ian_kropp', 'capybara','capybara']
+         #TODO figure out why this is breaking
          within("form")  do
-            6.times do |i|
+            fields.length.times do |i|
                fill_in fields[i], :with => fill[i]
             end
          end
@@ -48,14 +53,14 @@ describe "in the  user controllers," do
          #http://stackoverflow.com/questions/5228371/how-to-get-current-path-using-capybara
       end
 
-
    end
-
+   #THE SPLASH PAGE
    describe "the splash page" do 
       before { visit root_path }
       
       it "should have a valid link" do 
       end
+      #TODO add basic layout tests
 
       it "should have valid About link" do 
          click_link 'About'
@@ -77,7 +82,8 @@ describe "in the  user controllers," do
       end
 
       it "should have a valid Sign Up link" do
-         names = ['usr', 'pswd', 'pswd', 'book', 'author', 'genre']
+         click_link 'Sign Up'
+         ids = ['user_username', 'user_password', 'user_confirmpassword', 'user_favbook', 'user_favauthor','user_favgenre', 'user_aboutme']
          types = ['text', 'password', 'password', 'text','text', 'text', 'submit']
          classes = ['form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'btn btn-primary'  ]
 
@@ -86,7 +92,7 @@ describe "in the  user controllers," do
          expect(page).to have_content 'Thank you for trying Bookup'
          expect(page).to have_content 'Lets find you a book'
          6.times do | i |
-            expect(page).to have_xpath "//form/input[#{i + 1}][@name = '#{names[i]}']"
+            expect(page).to have_xpath "//form/input[#{i + 1}][@id = '#{ids[i]}']"
          end 
          7.times do |i|
             expect(page).to have_xpath "//form/input[#{i + 1}][@type = '#{types[i]}']"
