@@ -1,16 +1,24 @@
 class UsersController < ApplicationController
 	def create
-		if(params[:user][:password] != params[:user][:confirmpassword])
+		if !(params[:user][:password] == params[:user][:confirmpassword])
 			flash.now[:error] = "Password and password confirmation did not match"
 			render 'users/signup'
-		end
-		User.create(:userid => params[:user][:username], :password => params[:user][:password],  \
+    end
+
+		user = User.new(:userid => params[:user][:username], :password => params[:user][:password],  \
 			:favbook => params[:user][:favbook], :favauthor => params[:user][:favauthor], \
 			:favgenre => params[:user][:favgenre], :aboutme => params[:user][:aboutme])
-		user = User.find_by(userid: params[:user][:username])
-		puts user.userid
+    if user.already_exists(user.userid, user.password) == -1
+    user.save
 		session[:remember_token] = user.id
 		render 'profile'
+    elsif user.already_exists(user.userid, user.password) == 0
+      render 'users/signup'
+      flash[:notice] = "Username already exists"
+    else
+      render 'sessions/login'
+      flash[:notice] = "User already exists!"
+      end
 	end
 	def new
 	end
