@@ -35,19 +35,30 @@
 
       <!-- <div class="row"> -->
       
+      <% count = 0 %>
       <% @books.each do |x| %>
+
+      <% if (count % 4 == 0) %>
+      <div class="row">
+      <% end %>
               <div id = "b1thumb" class="col-sm-6 col-md-3">
                 <div class="thumbnail">
                   <img class="img-rounded" src="img/thumbnail-1.jpg" >
                   <div class="caption text-center">
                     <h3> <%= x.name %> </h3>
                     <p> <%= x.author %> </p>
-                    <p><a href="#" class="btn btn-success" role="button">I like it!</a>
-                    <a href="#" name = "nolike" class="btn btn-danger" role="button">No Thanks</a>
+                    <p><a class="btn btn-success" role="button">I like it!</a>
+                    <a name = "nolike" class="btn btn-danger" role="button">No Thanks</a>
                     </p>
                   </div>
                 </div>
               </div>
+      <% count += 1 %>
+
+      <% if (count % 4 == 0) %>
+      </div>
+      <% end %>
+
       <% end %>
 
       <!-- Footer
