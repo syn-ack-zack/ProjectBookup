@@ -1,6 +1,7 @@
 $(document).ready( function() {
 
-	thumb = $(".thumbnail");
-
+	$("[name='nolike']").click(function() {
+		$(this).parent().parent().parent().parent().fadeOut();
+	});
 
 });

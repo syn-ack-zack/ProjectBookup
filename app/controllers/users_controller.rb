@@ -26,8 +26,9 @@ def create
 	def signup
 	end
 	def profile
-		puts "USER IS #{@user}" 
-		@books = [1,2,3,4,5,6,7,8,9,10,11,12]
+		user = User.find_by(id: session[:remember_token]);
+		puts "USER IS #{user.userid}"
+		@books = user.recommended_books;
 		# @user.recommended_books(10, 0)
 	end
 
