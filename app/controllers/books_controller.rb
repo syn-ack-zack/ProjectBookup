@@ -17,4 +17,6 @@ class BooksController < ApplicationController
 	end 
 	def update 
 	end
+	def search
+	end
 end

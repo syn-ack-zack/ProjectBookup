@@ -19,7 +19,9 @@ Bookup::Application.routes.draw do
 
   get 'profile' => 'users#profile'
 
-   get 'sessions' => 'users#profile'
+  get 'sessions' => 'users#profile'
+
+  get 'search' => 'books#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
