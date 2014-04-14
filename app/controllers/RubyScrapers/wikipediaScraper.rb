@@ -1,7 +1,7 @@
-require 'net/http'
-require 'htmlentities'
+class wikipediascraper
 
-class WikipediaScraper
+    require 'net/http'
+    require 'htmlentities'
 
     def scrapeUsingBookTitle(title)
         url = "http://en.wikipedia.org/w/api.php?"
@@ -13,8 +13,7 @@ class WikipediaScraper
             )
         uri = URI(url);
         rawXML = Net::HTTP.get(uri)
-        #regex = /\{\{Infobox.*?\}\}(.*?)==/m
-        regex = /\{\{Infobox.*?'''(.*?)==/m
+        regex = /\{\{Infobox.*?\}\}(.*?)==/m
         parseHTML(rawXML, regex)
     end
 
@@ -32,7 +31,7 @@ class WikipediaScraper
         parseHTML(rawXML, regex)
     end
 
-    
+    private
 
         def parseHTML(string, regex)
             string.match(regex) { |firstPara|
@@ -40,17 +39,10 @@ class WikipediaScraper
                 firstPara.gsub!(/\[\[[^\]]*?\|(.*?)\]\]/, '\1')
                 firstPara.gsub!(/[\[\]']/, "")
                 firstPara.gsub!(/\{\{.*?\}\}/, "")
-                firstPara.gsub!(/&lt;\/?ref&gt.*?&lt;\/ref&gt;/, "")
-                firstPara.gsub!(/(.*?\}\})/, '')
+                firstPara.gsub(/&lt;\/?ref&gt.*?&lt;\/ref&gt;/, "")
                 firstPara = firstPara.force_encoding("iso-8859-1").encode("utf-8")
-                firstPara.gsub!(/ref&gt.*?ref&gt;/, '')
-                firstPara.gsub!(/\(.*?\)/, '')
-                encodedPara = HTMLEntities.new.decode firstPara
-
-                return encodedPara
+                puts HTMLEntities.new.decode firstPara
             }
-            return "No data"
         end
-
 
 end

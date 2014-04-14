@@ -3,13 +3,16 @@ require 'openLibraryScraper'
 
 class BooksController < ApplicationController
 	def create
+		user = Book.new(:isbn => params[:book][:isbn], :name => params[:book][:name], \
+			:author => params[:book][:author], :genre => params[:book][:genre])
+		redirect_to action: 'profile', controller: 'users'
 	end
 	
 	def new
 	end
-	
+
 	# Displays the book
-	def show 
+	def show
 		@book = Book.find(params[:id])
 		wiki = WikipediaScraper.new
 		# Scrapes Wikipedia for book bio to populate the respective divs
@@ -20,7 +23,7 @@ class BooksController < ApplicationController
 	def edit
 	end 
 	
-	def update 
+	def update
 	end
 
 	# handles searching for a book
