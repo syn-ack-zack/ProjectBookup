@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 def create
-		user = User.new(:userid => params[:user][:username], :password => params[:user][:password],  \
+	user = User.new(:userid => params[:user][:username], :password => params[:user][:password],  \
 			:favbook => params[:user][:favbook], :favauthor => params[:user][:favauthor], \
 			:favgenre => params[:user][:favgenre], :aboutme => params[:user][:aboutme])
 
@@ -42,7 +42,6 @@ def create
     end
 end 
 
-end
 def new
 end
 def show
