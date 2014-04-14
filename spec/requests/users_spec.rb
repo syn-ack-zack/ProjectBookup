@@ -41,7 +41,7 @@ describe "in the  user controllers," do
       #Link tests
       it "should create the correct URL when you hit 'login'" do
          click_link 'Log in'
-         fields = ['Username', 'Password', 'user[confirmpassword]']
+         fields = ['Username', 'Password', 'confirmpassword']
          fill = ['ian_kropp', 'capybara','capybara']
          #TODO figure out why this is breaking
          within("form")  do
