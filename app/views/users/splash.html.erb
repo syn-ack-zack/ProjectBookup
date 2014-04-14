@@ -16,20 +16,37 @@
   <body>
     <%= render :partial => '/menu',:locals => {:splash => 'current nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
 
-      <div class="aquaground">
-        <h1 class = "whiteHeader">Bookup</h1>
-        <h4 class="subheader">Let us find your next book</h4>
-        <h4 class="subheader">In the <span class = "bold">simplest</span> way possible.</h4>
-      </div>
-      <br>
-      <br>
       <div class="contain">
-        <h1 class="aquaHeader">How Do We Do It?</h1>
-        <h4 class="subheaderaqua">All you have to do is tell us the books you
-        <span class="bold">Like</span> or <span class="bold">Dislike</span>!</h4>
+        
+        <div class="aquaground">
+          <h1 class = "whiteHeader">Welcome to Bookup</h1>
+          <h4 class="subheader">Let us find your next book,</h4>
+          <h4 class="subheader">In the <span class = "bold">simplest</span> way possible.</h4>
+        </div>
+        
+        <div class="whiteground">
+          <h1 class="aquaHeader">How Do We Do It?</h1>
+          <h4 class="subheaderaqua">All you have to do is tell us the books you
+          <span class="bold">Like</span> or <span class="bold">Dislike</span>!</h4>
+          
+          <div class="centerdamnbutton">
+            <%= image_tag "stackbook.png" %>
+          </div>
+
+        </div>
+
+        <div class="aquaground">
+          <h1 class = "whiteHeader">Save Time</h1>
+          <h4 class="subheader">Spend your free time <span class = "bold">reading</span> rather than <span class = "bold">searching</span>.</h4>
+        </div>
+
         <div class="centerdamnbutton">
           <%= button_to "Want to try it out?",session[:remember_token] ? profile_path : signup_path, :class => "btn btn-primary", :method => :get%>
         </div>
+
+        <div class="centerdamnbutton">
+            <%= image_tag "openbook.png" %>
+          </div>
       </div>
 
 

@@ -39,6 +39,12 @@ body {
 	height: 325px;
 }
 
+.whiteground {
+	background-color: white;
+	margin: 0 auto;
+	/*height: 325px;*/
+}
+
 .bold {
 	font-weight: 600;
 }
