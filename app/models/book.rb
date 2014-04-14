@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true, length: {minimum: 1}
   validates :author, :presence => true, length: {minimum: 1, maximum: 35}
   validates :isbn, :presence => true, :uniqueness => true, length: {minimum: 13, maximum: 13}
-  validates_format_of :isbn, :with => /\A^978\d{10}$\Z/, :on => :create
+  validates_format_of :isbn, :with => /\A^978\d{10}[X|0-9]$\Z/, :on => :create
 
   def has_name_and_author
     if self.name == ""
