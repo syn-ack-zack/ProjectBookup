@@ -63,3 +63,7 @@ body {
 .input-group-button{
 	float: right;
 }
+
+.alert-dismissable{
+	text-align: center;
+}
