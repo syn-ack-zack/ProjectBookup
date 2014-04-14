@@ -31,4 +31,12 @@ class BooksController < ApplicationController
 		# Searches the database for all books where the author or name contains text in the input query
 		@book_results = Book.where("name LIKE ? OR author LIKE ? ", query_like, query_like)
 	end
+
+
+	def like_book
+	end
+
+	def dislike_book
+	end
+
 end
