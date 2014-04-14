@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(userid: params[:session][:username])
         if user && user.password == params[:session][:password]
-        	session[:remember_token] = user.id
+            session[:remember_token] = user.id
             redirect_to :actiom => 'users/profile'
         else
-        	flash.now[:error] = 'Invalid username or password'
+            flash.now[:error] = 'Invalid username or password'
             redirect_to :actiom => 'users/signup'
         end
     end

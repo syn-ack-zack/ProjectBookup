@@ -19,6 +19,13 @@ class BooksController < ApplicationController
 	end
 	def search
 		@query =  params[:user_search]
-		@book_results = Book.where("name LIKE ?", "%#{@query}%")
+		if(@query == "")
+			@book_results = nil
+		else
+			@book_results = Book.where("name LIKE ?", "%#{@query}%")
+			if(@book_results.length == 0)
+				@book_results = nil
+			end
+		end
 	end
 end
