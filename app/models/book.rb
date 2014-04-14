@@ -1,6 +1,8 @@
 class Book < ActiveRecord::Base
-  validates :name, :presence => true, :uniqueness => true, length: {minimum: 2}
-  validates :author, :presence => true, length: {minimum: 2, maximum: 35}
+  validates :name, :presence => true, :uniqueness => true, length: {minimum: 1}
+  validates :author, :presence => true, length: {minimum: 1, maximum: 35}
+  validates :isbn, :presence => true, :uniqueness => true, length: {minimum: 13, maximum: 13}
+  validates_format_of :isbn, :with => /\A^978\d{10}$\Z/, :on => :create
 
   def has_name_and_author
     if self.name == ""
@@ -11,17 +13,10 @@ class Book < ActiveRecord::Base
     return true
   end
 
-  def already_exists(name_or_isbn, book_author)
-    book = Book.find_by_name(name_or_isbn)
-    if !book
-      book = Book.find_by_isbn(name_or_isbn)
-    end
+  def already_exists(book_isbn, book_author)
+    book = Book.find_by_isbn(book_isbn.to_s)
     if book
-      if book.author == book_author
-        return 1
-      else
-        return 0
-      end
+      return 1
     else
       return -1
     end

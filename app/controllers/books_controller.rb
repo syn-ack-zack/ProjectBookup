@@ -3,9 +3,33 @@ require 'openLibraryScraper'
 
 class BooksController < ApplicationController
 	def create
-		user = Book.new(:isbn => params[:book][:isbn], :name => params[:book][:name], \
+		book = Book.new(:isbn => params[:book][:isbn], :name => params[:book][:name], \
 			:author => params[:book][:author], :genre => params[:book][:genre])
-		redirect_to action: 'profile', controller: 'users'
+
+    if !book.has_name_and_author
+      flash[:notice] = "Book name and author required!"
+      render 'books/new'
+      flash[:notice] = ""
+      return
+    end
+
+    result = book.already_exists(book.isbn, book.author)
+
+    if result == -1 && book.valid?
+      book.save
+      redirect_to action: 'profile', controller: 'users'
+    elsif result == 1
+      flash[:notice] = "Book already exists!"
+      render 'books/new'
+      flash[:notice] = ""
+      return
+    else
+      flash[:notice] = "Book is not valid! Book ISBN-13, Name, and Author required!"
+      render 'books/new'
+      flash[:notice] = ""
+      return
+    end
+
 	end
 	def new
 	end
