@@ -5,11 +5,11 @@ class BooksController < ApplicationController
 	def create
 		user = Book.new(:isbn => params[:book][:isbn], :name => params[:book][:name], \
 			:author => params[:book][:author], :genre => params[:book][:genre])
-		render '/users/profile'
+		redirect_to action: 'profile', controller: 'users'
 	end
 	def new
 	end
-	# Displays the boko
+	# Displays the book
 	def show
 		@book = Book.find(params[:id])
 		wiki = WikipediaScraper.new

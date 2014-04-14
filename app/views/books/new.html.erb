@@ -26,19 +26,19 @@
 
         <br>
 
-        <%= form_for(:book, url: users_path) do |f| %>
+        <%= form_for(:book, url: books_path) do |f| %>
           <%= f.label :isbn %>
           <%= f.text_field :isbn, class: "form-control"%>
 
           <br>
 
           <%= f.label "Book Name" %>
-          <%= f.password_field :name, class: "form-control"%>
+          <%= f.text_field :name, class: "form-control"%>
 
           <br>
 
           <%= f.label "Author" %>
-          <%= f.password_field :author, class: "form-control"%>
+          <%= f.text_field :author, class: "form-control"%>
 
           <br>
 
