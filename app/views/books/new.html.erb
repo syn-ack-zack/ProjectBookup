@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+
+    <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
+    <%=javascript_include_tag "site.min"%>
+
+  </head>
+  <body>
+
+      <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
+
+      <div class="aquaground">
+        <h1 class = "whiteHeader">Thank you for trying Bookup</h1>
+        <h4 class="subheader">Let's add a book to our collection</h4>
+      </div>
+      <br>
+      <br>
+      <div class="container">
+        <p id="notice"><%= notice %></p>
+
+        <br>
+
+        <%= form_for(:book, url: books_path) do |f| %>
+          <%= f.label :isbn %>
+          <%= f.text_field :isbn, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Book Name" %>
+          <%= f.text_field :name, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Author" %>
+          <%= f.text_field :author, class: "form-control"%>
+
+          <br>
+
+          <%= f.label "Genre" %>
+          <%= f.text_field :genre, class: "form-control"%>
+
+          <br>
+
+
+          <%= f.submit "Add Book", class: "btn btn-primary" %>
+        <% end %>
+
+        <%= debug(params) if Rails.env.development? %>
+
+
+      </div>
+  </body>
+</html>
