@@ -7,14 +7,14 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
     <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
 
   </head>
-  <body style="background-color: #f1f2f6;">
+  <body>
 
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
 
-      <!--header-->
       <div class="aquaground">
         <h1 class = "whiteHeader">Thank you for trying Bookup</h1>
         <h4 class="subheader">Lets find you a book</h4>
@@ -22,6 +22,10 @@
       <br>
       <br>
       <div class="container">
+        <p id="notice"><%= notice %></p>
+
+        <br>
+
         <%= form_for(:user, url: users_path) do |f| %>
           <%= f.label :username %>
           <%= f.text_field :username, class: "form-control"%>
@@ -62,21 +66,7 @@
         <% end %>
 
         <%= debug(params) if Rails.env.development? %>
-        <!-- <form id = "login">
-          <input name = "usr" type="text" class="form-control" placeholder="Username">
-          <br>
-          <input name = "pswd" type="password" class="form-control" placeholder="Password">
-          <br>
-          <input name = "pswd" type="password" class="form-control" placeholder="Password one more time...">
-          <br>
-          <input name = "book" type="text" class="form-control" placeholder="Favorite Book">
-          <br>
-          <input name = "author" type="text" class="form-control" placeholder="Favorite AUthor">
-          <br>
-          <input name = "genre" type="text" class="form-control" placeholder="Favorite Genre">
-          <br>
-          <input type="submit" value="Log In" class="btn btn-primary">
-        </form> -->
+
 
       </div>
   </body>
