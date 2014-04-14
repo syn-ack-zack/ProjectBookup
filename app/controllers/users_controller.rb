@@ -1,30 +1,47 @@
 class UsersController < ApplicationController
 	def create
-		if !(params[:user][:password] == params[:user][:confirmpassword])
-			flash[:notice] = "Password and password confirmation did not match"
-			render 'users/signup'
-      return
-    end
-
 		user = User.new(:userid => params[:user][:username], :password => params[:user][:password],  \
 			:favbook => params[:user][:favbook], :favauthor => params[:user][:favauthor], \
 			:favgenre => params[:user][:favgenre], :aboutme => params[:user][:aboutme])
-    if user.already_exists(user.userid, user.password) == -1
-    user.save
-		session[:remember_token] = user.id
-		render 'profile'
-      return
-    elsif user.already_exists(user.userid, user.password) == 0
-      flash[:notice] = "Username already exists"
+
+    if !user.has_username_and_password
+      flash[:notice] = "Username and password are required!"
       render 'users/signup'
       flash[:notice] = ""
       return
-    else
-      flash[:notice] = "User already exists!"
-      render 'sessions/login'
+    end
+
+    if !user.confirmation_password(params[:user][:confirmpassword], user.password)
+      flash[:notice] = "Password and Confirmation Password do not match!"
+      render 'users/signup'
+      flash[:notice] = ""
       return
-      end
-	end
+    end
+
+    if user.already_exists(user.userid, user.password) == -1 && user.valid?
+      user.save
+		  session[:remember_token] = user.id
+		  render 'profile'
+      flash[:notice] = ""
+      return
+    elsif user.already_exists(user.userid, user.password) == 0
+      flash[:notice] = "Username already exists!"
+      render 'users/signup'
+      flash[:notice] = ""
+      return
+    elsif user.already_exists(user.userid, user.password) == 1
+      flash[:notice] = "User already exists! Log in!"
+      render 'sessions/login'
+      flash[:notice] = ""
+      return
+    elsif !user.valid?
+        flash[:notice] = "Username or Password not valid! Must be at least 5 characters long!"
+        render 'users/signup'
+        flash[:notice] = ""
+        return
+    end
+  end
+
 	def new
 	end
 	def show

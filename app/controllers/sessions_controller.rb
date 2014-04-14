@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
         	session[:remember_token] = user.id
             render 'users/profile'
         else
-        	flash.now[:error] = 'Invalid username or password'
-            render 'users/signup'
+        	flash[:notice] = 'Invalid username or password'
+            render 'sessions/login'
+          flash[:notice] = ""
         end
     end
 
