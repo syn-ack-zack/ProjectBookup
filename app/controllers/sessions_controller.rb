@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
 
     def login
     end
-
+    
+    
     def create
         user = User.find_by(userid: params[:session][:username])
         if user && user.password == params[:session][:password]

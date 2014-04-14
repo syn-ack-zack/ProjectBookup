@@ -23,6 +23,8 @@ Bookup::Application.routes.draw do
 
   post 'search' => 'books#search', via: 'get'
 
+  get 'search' => 'books#search', via: 'get'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
