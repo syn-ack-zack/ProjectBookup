@@ -53,3 +53,7 @@ body {
 .form-search{
 	padding-top: 10px;
 }
+
+.input-group-button{
+	float: right;
+}
