@@ -39,6 +39,12 @@ body {
 	height: 325px;
 }
 
+.whiteground {
+	background-color: white;
+	margin: 0 auto;
+	/*height: 325px;*/
+}
+
 .bold {
 	font-weight: 600;
 }
@@ -47,5 +53,17 @@ body {
 .centerdamnbutton {
 	margin: 20px auto;
 	position: relative;
+	text-align: center;
+}
+
+.form-search{
+	padding-top: 10px;
+}
+
+.input-group-button{
+	float: right;
+}
+
+.alert-dismissable{
 	text-align: center;
 }

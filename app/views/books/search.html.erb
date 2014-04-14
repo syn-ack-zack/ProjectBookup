@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Documentation - Bootflat</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+
+    <%=stylesheet_link_tag "site.min"%>
+    <%=stylesheet_link_tag "style"%>
+    <%=javascript_include_tag "site.min"%>
+    <%=javascript_include_tag "actions"%>
+
+  </head>
+  <body>
+
+      <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
+      
+
+      <%if(@book_results != nil) %>
+      <!--Top-->
+      <div class="aquaground">
+          <h3 class="whiteHeader">Search Results</h3>
+          <h4 class="subheader"> <%= @query %> </h4>
+          <div class="alert alert-success alert-dismissable centerdamnbutton">
+              <p>Not seeing a book you like?</p>
+              <p><a class="btn btn-success" href="#">Add a Book!</a></p>
+         </div>
+        <div class="topic__infos">
+        </div>
+      </div>
+
+      <!-- BOOKS
+      ================================================== -->
+
+      <div class="container documents">
+
+        <% count = 0 %>
+        <% @book_results.each do |x| %>
+
+        <% if (count % 4 == 0) %>
+        <div class="row">
+        <% end %>
+                <div id = "b1thumb" class="col-sm-6 col-md-3">
+                  <div class="thumbnail">
+                    <img class="img-rounded" src="img/thumbnail-1.jpg" >
+                    <div class="caption text-center">
+                      <h3> <%= x.name %> </h3>
+                      <p> <%= x.author %> </p>
+                      <p><a class="btn btn-success" role="button">I like it!</a>
+                      <a name = "nolike" class="btn btn-danger" role="button">No Thanks</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+        <% count += 1 %>
+        <% if (count % 4 == 0) %>
+        </div>
+        <% end %>
+
+        <% end %>
+      </div>
+
+     <% else %>
+             <!--Top-->
+      <div class="aquaground">
+          <h3 class="whiteHeader">Search Results</h3>
+          <h4 class="whiteHeader">No Results Found!</h4>
+      </div>  
+
+   <% end %>
+      <!-- Footer
+      ================================================== -->
+  </body>
+</html>
