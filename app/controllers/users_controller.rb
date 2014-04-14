@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       flash[:notice] = ""
       return
     elsif !user.valid?
-        flash[:notice] = "Username or Password not valid! Must be at least 5 characters long!"
+        flash[:notice] = "Username or Password not valid!"
         render 'users/signup'
         flash[:notice] = ""
         return

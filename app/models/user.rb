@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 recommends :books
-    validates :userid, :presence => true, length: { minimum: 5}, uniqueness: { case_sensitive: false}
-    validates :password, :presence => true, length: {minimum: 5, maximum: 35}
+    validates :userid, :presence => true, length: { minimum: 5}, uniqueness: { case_sensitive: false}, format: { without: /\s/ }
+    validates :password, :presence => true, length: {minimum: 5, maximum: 35}, format: { without: /\s/ }
 
   def has_username_and_password
     if self.userid == ""
