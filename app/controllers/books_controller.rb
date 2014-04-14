@@ -18,5 +18,9 @@ class BooksController < ApplicationController
 	def update 
 	end
 	def search
+		@query =  params[:q]
+		@book_results = Book.where("name LIKE ?", "%#{@query}%")
+
+
 	end
 end
