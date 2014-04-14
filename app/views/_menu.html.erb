@@ -28,9 +28,7 @@
               </li>
               <li><%= link_to "Sign Out", {:controller => 'sessions', :action => 'logout'} ,
                 :class =>  signup %>
-              <li><%= link_to "Search", {:controller => 'books', :action => 'search'} ,
-                :class =>  signup %>
-              </li>
+
               <% else %>
               <%= link_to "About", {:controller => 'users', :action => 'splash'},
                 :class =>  splash %>
@@ -39,9 +37,6 @@
                 :class =>  login %>
               </li>
               <li><%= link_to "Sign Up", {:controller => 'users', :action => 'signup'} ,
-                :class =>  signup %>
-              </li>
-              <li><%= link_to "Search", {:controller => 'books', :action => 'search'} ,
                 :class =>  signup %>
               </li>
               <% end %>
