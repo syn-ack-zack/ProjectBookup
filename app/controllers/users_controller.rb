@@ -34,11 +34,11 @@ def create
       render 'sessions/login'
       flash[:notice] = ""
       return
-    elsif !user.valid?
-        flash[:notice] = "Username or Password not valid!"
-        render 'users/signup'
-        flash[:notice] = ""
-        return
+    else
+      flash[:notice] = "Username or Password not valid! Both need to be at least 5 characters long!"
+      render 'users/signup'
+      flash[:notice] = ""
+      return
     end
   end
 	
