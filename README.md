@@ -3,7 +3,7 @@ A web application for finding a book to read based on likes and dislikes. Simply
 
 ----
 
-Group Members 
+### Group Members 
 - Matthew Faluotico
 - Zack Nagaich
 - Neil Madsen
@@ -11,6 +11,7 @@ Group Members
 - Matt Ritter
 
 ----
+
 # Organization and Structure
 
 ## Front end development
@@ -34,24 +35,58 @@ Using that array, the `...html.erb` file will print out each of these books in a
 Using SQLite the database stores users and books. Because of recommendable, the team used Redis. Redis stored the likes and dislikes for each user. Redis is not a sqlite database. It uses a flat database, which is a different format than a sql-based table Database. Because recommendable handles most of the interactions with the LIKES database, we did not work much with querying any information from this database. 
 
 
+# What we learned
+
+The team used **Git** and **GitHub** throughout the project. In the beginning, it was the largest bottleneck. The correct use was unknown to the team. After a week or so, everything seemed to start working a lot better. Using issues on GitHub helped the team organize tasks. The biggest problem with GitHub was merging files line by line. The team was never able to find a good solution for this.
+
+The difference between flat and SQL databases was explained a bit more by working on this project. Different actions require different database styles. Because of the way recommendable worked, SQL-like queries would not provide good results. 
+
+
 
 ----
 # Executing Bookup
 
+1. Clone the project to a directory on your source machine 
+2. Redis must be installed on the source system. To install redis, run `apt-get redis-server` in the command line
+3. Run bundle install to gather all the required gems from the `gemfile`
+4. To set up the database, run `rake db:migrate:reset` followed by `rake:db:seed` to populate the database from the seed file. 
+3. Run `rails server` in the directory of the project
+4. Navigate to `localhost:3000`
+5. You should be at the home screen. You have two options, 1) Create an account or 2) Log in with our default account (contains a handful of likes and dislikes)
+    
+    USER: MattRitter
+
+    PASSWORD: 
+
+6. Profile will show your suggested books, by liking and disliking them you will gradually update the suggested books.
+7. You can add a book if it isn't already in the bookup database.
 
 ---
 # Contributions
 
+Overall, the team all worked equally on ruby code. Often, rather than splitting up jobs, the team would all work around the same computer. Shooting off ideas of how to implement a specific task or take a stab at an error. This is how most of our controllers were written. After a general idea was in place, the members would continue on their own. Matt and Zach primarily handled presenting model information onto the view. Neil handled most of the back end information, updating controllers, managing the recommendable database. Matt Ritter handled validation and database set. Ian made sure everything was working correctly the entire project by leading tests and reporting and usually activity. 
+
 - Matthew Faluotico
-    + Primary front end development
-    + 
+    - Primary front end development
+        - Handled most of the design
+    - Wrote the controller for profile and helped with the search controller
+        - Profile and Search are similar, Matt and Zach worked on this
 - Zack Nagaich
-    + Embedded Ruby wizard. 
+    - Embedded Ruby wizard. 
+    - Wrote the search controller
+        - Very similar to profile, worked with Matt Faluotico on this
+    * Helped create SQL database with Matt Ritter
 - Neil Madsen
-    + Project Manager
+    - Project Manager
+    - Created actions for all of the buttons 
+    - Parse data from Wikipedia 
+    - Build database for likes with recommendable 
 - Ian Kropp
-    + King of testing 
-    + Ian has the most experience with testing because of his job. 
+    - King of testing 
+    - Ian has the most experience with testing because of his job. 
+    - Created the add books page and helped Matt Ritter with validation for adding a new book
+    - Helped populate seed
 - Matt Ritter
-    + Database Master
-    + Worked on database validation 
+    - Database Master
+    - Worked on database validation 
+    - Helped popular seed file
