@@ -48,52 +48,58 @@ def create
       flash[:notice] = ""
       return
     end
-  end
-	
-	def new
-	end
+end
 
-	def show
-	end
 
-	def edit
-	end
+def new
+end
 
-	def update
-	end
+def show
+end
 
-	def splash
-	end
+def edit
+end
 
-	def signup
-	end
+def update
+end
 
-	# The user profile shows all of the recommended books for a user
-	def profile
+def splash
+end
+
+def signup
+end
+
+# The user profile shows all of the recommended books for a user
+def profile
 		# Gets the current user
 		@user = User.find_by(id: session[:remember_token]);
 		# This is set up for the recommendable gem
 		Recommendable::Helpers::Calculations.update_similarities_for(@user.id)
 		Recommendable::Helpers::Calculations.update_recommendations_for(@user.id)
 
-		# returns the 12 
-		# TODO UPDATE FOR REFRESH 
+		# returns the 12
+		# TODO UPDATE FOR REFRESH
 		@books = @user.recommended_books 12
-end 
 
-def new
+    # puts @books
 end
-def show
+
+def likebook
+  user = User.find_by(id: params[:useridentifier])
+  book = Book.find_by(id: params[:bookidentifier])
+  if(user.dislikes?(book))
+    user.undislike(book)
+  end
+  user.like(book)
 end
-def edit
-end
-def update
-end
-def splash
-end
-def signup
-end
-def like_button (book_id) 
+
+def dislikebook
+  user = User.find_by(id: params[:useridentifier])
+  book = Book.find_by(id: params[:bookidentifier])
+  if(user.likes?(book))
+    user.unlike(book)
+  end
+  user.dislike(book)
 end
 
 end
