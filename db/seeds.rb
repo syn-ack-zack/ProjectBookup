@@ -123,6 +123,6 @@ users.each do |user|
 	books = Array.new(Book.all)
 	10.times do
 		user.like(books.delete(books.sample))
-		user.unlike(books.delete(books.sample))
-	end 
-end 
+		user.dislike(books.delete(books.sample))
+	end
+end

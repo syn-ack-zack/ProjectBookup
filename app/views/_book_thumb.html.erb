@@ -5,7 +5,7 @@
     <!--cover image-->
     <%= image_tag "defbook.jpg" %>
     <div class="caption text-center">
-      <h3> 
+      <h3>
       <!--book title that is linkable to the books page in books/show/id-->
       <%= link_to book.name, :controller => 'books', :action => 'show', id: book %>
       </h3>
@@ -13,13 +13,12 @@
       <!--book author-->
       <p> <%= book.author %> </p>
       <p>
-
-      <%= link_to "Like", '#', :onclick => 'like_this_book()' ,class: 'btn btn-success' %>
+      <a name = "<%= book.id %>" class="btn btn-success" role="button">Like</a>
        <!-- { :controller=>'books', :action=>'like_book'}, :remote => true ,
       :method => :put, :class => 'btn btn-success' %> -->
 
       <!-- <a class="btn btn-success" role="button">I like it!</a> -->
-      <a name = "nolike" class="btn btn-danger" role="button">Dislike</a>
+      <a name = "<%= book.id %>" class="btn btn-danger" role="button">Dislike</a>
       </p>
     </div>
   </div>

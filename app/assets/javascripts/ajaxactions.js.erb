@@ -1,0 +1,29 @@
+$(document).ready( function() {
+    // Ajax call when the like button is pressed to like the book for the user in recommendable
+    $('.btn-success').click(function() {
+        var userid = document.userid;
+        var bookid = $(this).attr('name');
+        $.ajax({
+            url: '/likebook',
+            type: 'PUT',
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {useridentifier: userid, bookidentifier: bookid},
+        });
+        $(this).text("Liked!");
+        $('.btn-danger[name="' + bookid + '"]').text("Dislike");
+    });
+    // Ajax call when the dislike button is pressed to dislike the book for the user in recommendable
+    $('.btn-danger').click(function() {
+        var userid = document.userid;
+        var bookid = $(this).attr('name');
+        $.ajax({
+            url: '/dislikebook',
+            type: 'PUT',
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {useridentifier: userid, bookidentifier: bookid},
+        });
+        $(this).text("Disliked!");
+        $('.btn-success[name="' + bookid + '"]').text("Like");
+    });
+});
+

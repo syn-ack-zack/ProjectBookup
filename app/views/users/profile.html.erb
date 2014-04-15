@@ -2,17 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Documentation - Bootflat</title>
+    <title><%= @user.userid %>'s Profile</title>
 
     <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
     <!--stylesheets located in assets/stylesheets
         javascript located in assets/javascripts-->
+    <%= javascript_tag do %>
+      document.userid = '<%= session[:remember_token] %>';
+    <% end %>
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
     <%=javascript_include_tag "actions"%>
+    <%= javascript_include_tag "ajaxactions" %>
+    <%= csrf_meta_tag %>
 
   </head>
   <body>
@@ -20,7 +25,7 @@
     <!-- _menu partial used to the navigation bar and header, marking login/profile button with 'current nav-link' class to make
         the highlighted tab the user is on -->
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'current nav-link',:signup => 'nav-link'}%>
-      
+
 
       <!--Top-->
       <div class="aquaground">
@@ -65,6 +70,7 @@
       <% else %>
           <p class="subheaderaqua"> Go like some books, and see the results appear here! </p>
       <% end %>
+
 
       </div>
   </body>

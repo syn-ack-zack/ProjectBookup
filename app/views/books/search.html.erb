@@ -2,17 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Documentation - Bootflat</title>
+    <title>Search Results</title>
 
     <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
    <!--stylesheets located in assets/stylesheets
         javascript located in assets/javascripts-->
+    <%= javascript_tag do %>
+      document.userid = '<%= session[:remember_token] %>';
+    <% end %>
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
     <%=javascript_include_tag "actions"%>
+    <%= javascript_include_tag "ajaxactions" %>
+    <%= csrf_meta_tag %>
+
 
   </head>
   <body>
@@ -20,19 +26,15 @@
     <!-- _menu partial used to the navigation bar and header, marking about button with 'current nav-link' class to make
         the highlighted tab the user is on -->
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
-      
+
       <!--if returned book results are not empty then display query and book results-->
       <%if(@book_results != nil) %>
       <!--Top-->
       <div class="aquaground">
           <h3 class="whiteHeader">Search Results</h3>
           <h4 class="subheader"> <%= @query %> </h4>
-<<<<<<< HEAD
-          <div class="alert small alert-success alert-dismissable centerdamnbutton">
-=======
             <!--add book div with button linking to /books/new-->
           <div class="alert alert-success alert-dismissable centerdamnbutton">
->>>>>>> a63c34addb94334f6597b4648d15eba151186ff6
               <p>Not seeing a book you like?</p>
               <!--add book button, links to books/new-->
               <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
@@ -54,7 +56,7 @@
         <div class="row">
         <% end %>
                  <!--partial for book thumbnail-->
-                 <%= render :partial => '/book_thumb',:locals => {:book => x, :user => @user}%>
+                 <%= render :partial => '/book_thumb', :locals => {:book => x, :user => @user}%>
 
         <% count += 1 %>
         <% if (count % 4 == 0) %>
@@ -73,7 +75,7 @@
               <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
                 :class =>  "btn btn-success" %></p>
          </div>
-      </div>  
+      </div>
 
    <% end %>
   </body>

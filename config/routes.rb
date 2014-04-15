@@ -13,8 +13,8 @@ Bookup::Application.routes.draw do
 
   get 'signup' => 'users#signup', via: 'get'
 
-  get 'signup' => 'users#signup', via: 'get' 
-  
+  get 'signup' => 'users#signup', via: 'get'
+
   get 'logout' => 'sessions#logout', via: 'destroy'
 
   get 'profile' => 'users#profile'
@@ -26,6 +26,10 @@ Bookup::Application.routes.draw do
   get 'search' => 'books#search', via: 'get'
 
   post '/books/like_book' => 'books#like_book'
+
+  put 'likebook' => 'users#likebook'
+
+  put 'dislikebook' => 'users#dislikebook'
 
 
 
