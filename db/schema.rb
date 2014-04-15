@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140403010258) do
 
   create_table "books", force: true do |t|
-    t.string   "isbn"
+    t.string   "isbn",       null: false
     t.string   "name",       null: false
     t.string   "author",     null: false
     t.string   "genre"

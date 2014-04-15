@@ -2,10 +2,14 @@ require 'wikipediaScraper'
 require 'openLibraryScraper'
 
 class BooksController < ApplicationController
+
+  #Create will run upon Book creation
 	def create
+    #Create a temporary book object containing the form input from the new book page
 		book = Book.new(:isbn => params[:book][:isbn], :name => params[:book][:name], \
 			:author => params[:book][:author], :genre => params[:book][:genre])
 
+    #If book lacks a name or author, show an error and render the page again
     if !book.has_name_and_author
       flash[:notice] = "Book name and author required!"
       render 'books/new'
@@ -13,16 +17,20 @@ class BooksController < ApplicationController
       return
     end
 
+    #Get the result of the already_exists method...
     result = book.already_exists(book.isbn)
 
+    #If the book is valid and it isn't found in the database, add it, then redirect to the profile page
     if result == -1 && book.valid?
       book.save
       redirect_to action: 'profile', controller: 'users'
+    #If the book is found in the database, notify the user and render the page again
     elsif result == 1
       flash[:notice] = "Book already exists!"
       render 'books/new'
       flash[:notice] = ""
       return
+    #Else, the book entered isn't valid. Notify the user and render the page again
     else
       flash[:notice] = "Book is not valid! Book ISBN-13, Name, and Author required!"
       render 'books/new'
