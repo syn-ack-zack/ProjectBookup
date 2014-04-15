@@ -79,6 +79,8 @@ def create
 		# returns the 12 
 		# TODO UPDATE FOR REFRESH 
 		@books = @user.recommended_books 12
+
+    # puts @books
 end 
 
 def new
