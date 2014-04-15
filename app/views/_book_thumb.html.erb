@@ -8,12 +8,12 @@
 
       <p> <%= book.author %> </p>
       <p>
-      <%= link_to "I like it!",  
+      <%= link_to "Like",  
        { :controller=>'books', :action=>'like_book'}, :remote => true ,
       :method => :put, :class => 'btn btn-success' %>
 
       <!-- <a class="btn btn-success" role="button">I like it!</a> -->
-      <a name = "nolike" class="btn btn-danger" role="button">Don't like it</a>
+      <a name = "nolike" class="btn btn-danger" role="button">Dislike</a>
       </p>
     </div>
   </div>

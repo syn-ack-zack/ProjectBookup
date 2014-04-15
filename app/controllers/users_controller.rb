@@ -48,7 +48,8 @@ def create
       flash[:notice] = ""
       return
     end
-  end
+end
+
 	
 	def new
 	end
@@ -81,7 +82,7 @@ def create
 		@books = @user.recommended_books 12
 
     # puts @books
-end 
+  end 
 
 def new
 end
