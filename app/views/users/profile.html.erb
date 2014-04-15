@@ -26,12 +26,7 @@
       <div class="aquaground">
           <h3 class="whiteHeader">Your Recommendations</h3>
           <h4 class="subheader">The simple way to find your next read.</h4>
-<<<<<<< HEAD
           <div class="alert small alert-success alert-dismissable centerdamnbutton">
-=======
-          <!--add book div with button linking to /books/new-->
-          <div class="alert alert-success alert-dismissable centerdamnbutton">
->>>>>>> a63c34addb94334f6597b4648d15eba151186ff6
               <p>Not seeing a book you like?</p>
               <!--add book button, links to books/new-->
               <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
@@ -44,12 +39,9 @@
 
       <div class="container documents">
 
-<<<<<<< HEAD
       <%if(@books != nil) %>
-=======
+
       <!--if returned results are not empty-->
-      <%if(@book_results != nil) %>
->>>>>>> a63c34addb94334f6597b4648d15eba151186ff6
 
       <!--for each returned book result, render partial for book thumbnail result-->
       <% count = 0 %>

@@ -13,14 +13,10 @@
       <!--book author-->
       <p> <%= book.author %> </p>
       <p>
-<<<<<<< HEAD
-      <%= link_to "Like",  
-=======
-      <!--like/dislike buttons-->
-      <%= link_to "I like it!",  
->>>>>>> a63c34addb94334f6597b4648d15eba151186ff6
-       { :controller=>'books', :action=>'like_book'}, :remote => true ,
-      :method => :put, :class => 'btn btn-success' %>
+
+      <%= link_to "Like", '#', :onclick => 'like_this_book()' ,class: 'btn btn-success' %>
+       <!-- { :controller=>'books', :action=>'like_book'}, :remote => true ,
+      :method => :put, :class => 'btn btn-success' %> -->
 
       <!-- <a class="btn btn-success" role="button">I like it!</a> -->
       <a name = "nolike" class="btn btn-danger" role="button">Dislike</a>

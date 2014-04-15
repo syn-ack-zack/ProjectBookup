@@ -72,6 +72,14 @@ class BooksController < ApplicationController
 	end
 
 	def like_book
+     user = params["user"]
+     book = params["book"]
+
+     result = user + books
+
+     respond_to do |format|
+       format.json {render :jason => {:result => result}}
+     end
 	end
 	
 	def dislike_book
