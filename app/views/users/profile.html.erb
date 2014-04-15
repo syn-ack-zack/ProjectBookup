@@ -35,6 +35,8 @@
       ================================================== -->
       <div class="container documents">
 
+      <%if(@book_results != nil) %>
+
       <% count = 0 %>
       <% @books.each do |x| %>
 
@@ -50,6 +52,10 @@
         </div>
       <% end %>
 
+      <% end %>
+
+      <% else %>
+          <p class="subheaderaqua"> Go like some books, and see the results appear here! </p>
       <% end %>
 
       </div>
