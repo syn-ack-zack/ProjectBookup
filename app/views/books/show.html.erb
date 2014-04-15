@@ -4,34 +4,43 @@
     <meta charset="utf-8">
     <title>Documentation - Bootflat</title>
 
+    <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="css/site.min.css">
-    <script type="text/javascript" src="js/site.min.js"></script>
+       <!--stylesheets located in assets/stylesheets
+        javascript located in assets/javascripts-->
+    <%=stylesheet_link_tag "site.min"%>
+    <%=javascript_include_tag "site.min"%>
 
   </head>
   <body>
     
+ <!-- _menu partial used to the navigation bar and header, making no header button unselected -->
   <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
-      <!--header-->
       
+      <!--display wiki scraped information on page-->
         <div class="container">
+          <!--display book name-->
           <h1 class="aquaHeader">
           <%= @book.name %> 
           </h1>
+          <!--display book author-->
           <h4 class="subheaderaqua">
           <%= @book.author %>
           </h4>
         <div class="cover">
+          <!--get book cover if it exists-->
           <img src= <%= "http://covers.openlibrary.org/b/isbn/" + @book.isbn + "-L.jpg"%>>
         </div>
         <div class="topic__infos">
           <div class="wiki">
+            <!--display wiki book information-->
             <div class = "iamwhitebox">
               <h3 class = "subheaderaqualeft">Book Bio</h3>
               <p> <%= @bookDescription %></p>
             </div>
             <br>
+            <!--display wiki author information-->
             <div class = "iamwhitebox">
               <h3 class = "subheaderaqualeft">Author Bio</h3>
               <p> <%= @authorDescription %></p>
@@ -39,6 +48,7 @@
           </div>
         </div>
 
+        <!--Like or Dislike buttons for book rating-->
         <div class="centerdamnbutton">
           <p><a href="#" class="btn btn-success" role="button">I like it!</a>
           <a href="#" class="btn btn-danger" role="button">No Thanks</a>

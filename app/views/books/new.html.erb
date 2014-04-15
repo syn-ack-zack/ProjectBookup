@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title>Sign Up</title>
 
+    <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
+       <!--stylesheets located in assets/stylesheets
+        javascript located in assets/javascripts-->
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
@@ -13,7 +16,8 @@
   </head>
   <body>
 
-      <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'current nav-link'}%>
+ <!-- _menu partial used to the navigation bar and header, making no header button unselected -->
+      <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
 
       <div class="aquaground">
         <h1 class = "whiteHeader">Thank you for trying Bookup</h1>
@@ -26,28 +30,30 @@
 
         <br>
 
+        <!--embedded ruby form helper for book information-->
         <%= form_for(:book, url: books_path) do |f| %>
+        <!--isbn field-->
           <%= f.label :isbn %>* (Must begin with 978)
           <%= f.text_field :isbn, class: "form-control"%>
 
           <br>
-
+          <!--book name-->
           <%= f.label "Book Name" %>*
           <%= f.text_field :name, class: "form-control"%>
 
           <br>
-
+          <!--book author-->
           <%= f.label "Author" %>*
           <%= f.text_field :author, class: "form-control"%>
 
           <br>
-
+          <!--book genre-->
           <%= f.label "Genre" %>
           <%= f.text_field :genre, class: "form-control"%>
 
           <br>
 
-
+          <!--add book button, submits the form data-->
           <%= f.submit "Add Book", class: "btn btn-primary" %>
         <% end %>
 

@@ -1,14 +1,24 @@
+
+<!--book thumbnail that contains cover picture, book title, book author, like and dislike buttons-->
 <div id = "b1thumb" class="col-sm-6 col-md-3">
   <div class="thumbnail">
+    <!--cover image-->
     <%= image_tag "defbook.jpg" %>
     <div class="caption text-center">
       <h3> 
+      <!--book title that is linkable to the books page in books/show/id-->
       <%= link_to book.name, :controller => 'books', :action => 'show', id: book %>
       </h3>
 
+      <!--book author-->
       <p> <%= book.author %> </p>
       <p>
+<<<<<<< HEAD
       <%= link_to "Like",  
+=======
+      <!--like/dislike buttons-->
+      <%= link_to "I like it!",  
+>>>>>>> a63c34addb94334f6597b4648d15eba151186ff6
        { :controller=>'books', :action=>'like_book'}, :remote => true ,
       :method => :put, :class => 'btn btn-success' %>
 
