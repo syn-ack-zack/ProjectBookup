@@ -23,7 +23,8 @@
           <h4 class="subheader">The simple way to find your next read.</h4>
           <div class="alert alert-success alert-dismissable centerdamnbutton">
               <p>Not seeing a book you like?</p>
-              <p><a class="btn btn-success" href="#">Add a Book!</a></p>
+              <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
+                :class =>  "btn btn-success" %></p>
          </div>
         <div class="topic__infos">
         </div>

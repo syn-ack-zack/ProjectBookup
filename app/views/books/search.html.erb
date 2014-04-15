@@ -24,7 +24,8 @@
           <h4 class="subheader"> <%= @query %> </h4>
           <div class="alert alert-success alert-dismissable centerdamnbutton">
               <p>Not seeing a book you like?</p>
-              <p><a class="btn btn-success" href="#">Add a Book!</a></p>
+              <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
+                :class =>  "btn btn-success" %></p>
          </div>
         <div class="topic__infos">
         </div>
@@ -68,7 +69,8 @@
           <h4 class="subheader">No Results Found!</h4>
           <div class="alert alert-success alert-dismissable centerdamnbutton">
               <p>Not seeing a book you like?</p>
-              <p><a class="btn btn-success" href="#">Add a Book!</a></p>
+              <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
+                :class =>  "btn btn-success" %></p>
          </div>
       </div>  
 
