@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title>Documentation - Bootflat</title>
 
+    <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
+    <!--stylesheets located in assets/stylesheets
+        javascript located in assets/javascripts-->
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
     <%=javascript_include_tag "site.min"%>
@@ -14,6 +17,8 @@
   </head>
   <body>
 
+    <!-- _menu partial used to the navigation bar and header, marking login/profile button with 'current nav-link' class to make
+        the highlighted tab the user is on -->
       <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'current nav-link',:signup => 'nav-link'}%>
       
 
@@ -21,8 +26,10 @@
       <div class="aquaground">
           <h3 class="whiteHeader">Your Recommendations</h3>
           <h4 class="subheader">The simple way to find your next read.</h4>
+          <!--add book div with button linking to /books/new-->
           <div class="alert alert-success alert-dismissable centerdamnbutton">
               <p>Not seeing a book you like?</p>
+              <!--add book button, links to books/new-->
               <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
                 :class =>  "btn btn-success" %></p>
          </div>
@@ -31,19 +38,21 @@
       </div>
     </div>
 
-      <!-- BOOKS
-      ================================================== -->
+      <!--===Book Results===-->
+
       <div class="container documents">
 
+      <!--if returned results are not empty-->
       <%if(@book_results != nil) %>
 
+      <!--for each returned book result, render partial for book thumbnail result-->
       <% count = 0 %>
       <% @books.each do |x| %>
 
       <% if (count % 4 == 0) %>
       <div class="row">
       <% end %>
-
+              <!--partial for book thumbnail-->
               <%= render :partial => '/book_thumb',:locals => {:book => x, :user => @user}%>
 
       <% count += 1 %>
@@ -54,13 +63,11 @@
 
       <% end %>
 
+      <!--if there are no returned reccomended books then instruct user to go like books-->
       <% else %>
           <p class="subheaderaqua"> Go like some books, and see the results appear here! </p>
       <% end %>
 
       </div>
-
-      <!-- Footer
-      ================================================== -->
   </body>
 </html>

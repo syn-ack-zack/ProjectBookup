@@ -4,46 +4,57 @@
     <meta charset="utf-8">
     <title>BookUp</title>
 
+    <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
+       <!--stylesheets located in assets/stylesheets
+        javascript located in assets/javascripts-->
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
-
     <%=javascript_include_tag "site.min"%>
 
 
   </head>
   <body>
+    <!-- _menu partial used to the navigation bar and header, marking about button with 'current nav-link' class to make
+        the highlighted tab the user is on -->
     <%= render :partial => '/menu',:locals => {:splash => 'current nav-link',:login => 'nav-link',:signup => 'nav-link'}%>
 
       <div class="contain">
         
+        <!--welcome banner for splash page-->
         <div class="aquaground">
           <h1 class = "whiteHeader">Welcome to Bookup</h1>
           <h4 class="subheader">Let us find your next book,</h4>
           <h4 class="subheader">in the <span class = "bold">simplest</span> way possible.</h4>
         </div>
         
+        <!--sub banner for splash page -->
         <div class="whiteground">
           <h1 class="aquaHeader">How Do We Do It?</h1>
           <h4 class="subheaderaqua">All you have to do is tell us the books you
           <span class="bold">Like</span> or <span class="bold">Dislike</span>!</h4>
           
+          <!--stacked book image on splash page-->
           <div class="centerdamnbutton">
             <%= image_tag "stackbook.png" %>
           </div>
 
         </div>
 
+        <!--descriptive banner on splash page-->
         <div class="aquaground">
           <h1 class = "whiteHeader">Save Time</h1>
           <h4 class="subheader">Spend your free time <span class = "bold">reading</span> rather than <span class = "bold">searching</span>.</h4>
         </div>
 
+        <!--want to try it out button-->
         <div class="centerdamnbutton">
+        <!--ternary condition; if user is logged in send to profile page, if not then send to sign up page -->
           <%= button_to "Want to try it out?",session[:remember_token] ? profile_path : signup_path, :class => "btn btn-primary", :method => :get%>
         </div>
 
+        <!-- open book image at bottom of splash page -->
         <div class="centerdamnbutton">
             <%= image_tag "openbook.png" %>
           </div>

@@ -1,5 +1,7 @@
+<!--Partial for the header used throughout the webpage-->
 <div class="docs-header">
       <!--nav-->
+      <!--navigation bar containing all menu option -->
       <nav class="navbar navbar-default navbar-custom" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -11,12 +13,16 @@
             </button>
             <ul class="nav navbar-nav navbar-right ">
              <li>
+              <!--if a user is not logged in then change the search bar to the Bookup about link--> 
                 <% if session[:remember_token] == nil %>
+                <!--button link to the site splash page for "Bookup"-->
                 <%= link_to "Bookup", {:controller => 'users', :action => 'splash'},
                 :class =>  "nav-link" %>
             </li>
+            <!--if the user is logged in, change Bookup link to the search bar for book queries-->
             <%else%>
              <li>
+                  <!--Search bar form helper-->
                   <div class="input-group form-search">
                     <%= form_tag({:controller=>"books", :action=>"search"}, method: :get) do %>
                     <%= text_field_tag :user_search %>
@@ -29,23 +35,26 @@
            <%end%>
            </ul>
           </div>
+          <!--navigation items to link for about, profile, and sign out page-->
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li>
+              <!-- navigational buttons to link to other pages -->
               <% if session[:remember_token] != nil %>
               <%= link_to "About", {:controller => 'users', :action => 'splash'},
                 :class =>  splash %>
               </li>
+              <!-- if a user is logged in update the log in button to change to profile page button-->
               <li><%= link_to "Profile", {:controller => 'users', :action => 'profile'} ,
                 :class =>  login %>
               </li>
               <li><%= link_to "Sign Out", {:controller => 'sessions', :action => 'logout'} ,
                 :class =>  signup %>
-
               <% else %>
               <%= link_to "About", {:controller => 'users', :action => 'splash'},
                 :class =>  splash %>
               </li>
+              <!--if a user is not logged in then show the log in button-->
               <li><%= link_to "Log in", {:controller => 'sessions', :action => 'login'} ,
                 :class =>  login %>
               </li>

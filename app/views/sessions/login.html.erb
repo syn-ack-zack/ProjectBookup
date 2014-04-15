@@ -4,40 +4,50 @@
     <meta charset="utf-8">
     <title>Login</title>
 
+    <!--Google font used for site-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
 
+
+    <!--stylesheets located in assets/stylesheets
+      javascript located in assets/javascripts-->
     <%=stylesheet_link_tag "site.min"%>
     <%=stylesheet_link_tag "style"%>
-
     <%=javascript_include_tag "site.min"%>
 
   </head>
   <body style="background-color: #f1f2f6;">
+
+    <!-- _menu partial used to the navigation bar and header, marking about button with 'current nav-link' class to make
+        the highlighted tab the user is on -->
     <%= render :partial => '/menu',:locals => {:splash => 'nav-link',:login => 'current nav-link',:signup => 'nav-link'}%>
 
-      <!--header-->
+    <!--welcome banner-->
       <div class="aquaground">
         <h1 class = "whiteHeader">Welcome to Bookup</h1>
         <h4 class="subheader">Lets find you a book</h4>
       </div>
       <br>
       <br>
+      <!--embedded ruby form helper for username and password input-->
       <div class="container">
+      <!--notice paragraph for messages to display on login failure-->
         <p id="notice"><%= notice %></p>
         <!--<form id = "userPage"> -->
         <%= form_for(:session, url: sessions_path) do |f| %>
+        <!--username form-->
           <%= f.label :username %>
           <%= f.text_field :username, class: "form-control"%>
 
           <br>
-
+          <!--password form-->
           <%= f.label :password %>
           <%= f.password_field :password, class: "form-control"%>
 
           <br>
-
+          <!--log in button, submits login data-->
           <%= f.submit "Log in", class: "btn btn-primary" %>
         <% end %>
+        
         <!-- </form> -->
         <%= debug(params) if Rails.env.development? %>
       </div>
