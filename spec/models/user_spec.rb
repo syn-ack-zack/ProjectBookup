@@ -3,9 +3,11 @@ require 'spec_helper'
 describe User do
    before{ 
       @user = User.new( userid: 'iankropp', password: 'capybara', favbook: 'iRobot', aboutme: 'I am tired', favauthor: 'Twain', favgenre:'funnies' )
-      @secondUser = User.new( userid: 'shareef', password: 'capybara', favbook: 'iRobot', aboutme: 'I am tired', favauthor: 'Twain', favgenre:'funnies' )
+      @secondUser = User.new( userid: 'paul', password: 'capybara', favbook: 'iRobot', aboutme: 'I am tired', favauthor: 'Twain', favgenre:'funnies' )
    }
+   
    subject { @user }
+
    #All fields are filled
    it { should respond_to(:userid)}
    it { should respond_to(:password)}
@@ -45,12 +47,12 @@ describe User do
 
    describe 'when user id has leading whitespace' do
       before{ @user.userid = '  iankropp'}
-      it {should be_valid}
+      it {should_not be_valid}
    end
 
    describe 'when user id has trailing whitespace' do
       before{ @user.userid = 'iankropp   '}
-      it {should be_valid}
+      it {should_not be_valid}
    end
 
    describe 'when user id is multiple words' do
@@ -59,12 +61,23 @@ describe User do
    end
    
    describe 'when userid is not unique' do
-      before{@user.userid = 'shareef'}
+      before{
+         @secondUser.userid = 'shareef'
+         @secondUser.save
+
+         @user.userid = 'shareef'
+         @user.save
+               }
       it {should_not be_valid}
    end
    
    describe 'when two userids are only different by capitals' do
-      before{@user.userid = 'Shareef'}
+      before{
+         @secondUser.userid = 'Shareef'
+         @secondUser.save
+         @user.userid = 'shareef'
+         @user.save
+      }
       it {should_not be_valid}
    end
 
