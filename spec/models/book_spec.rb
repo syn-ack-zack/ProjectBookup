@@ -148,7 +148,6 @@ describe Book do
          @book.isbn = "91939158119a1"
       }         
       it {should_not be_valid}
-
    end
 
 
