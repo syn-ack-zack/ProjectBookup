@@ -1,5 +1,9 @@
 == README
 
+PLEASE GO TO README.MD
+
+The rest of this info is just randomly generated stuff....
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
