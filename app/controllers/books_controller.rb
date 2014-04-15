@@ -13,7 +13,7 @@ class BooksController < ApplicationController
       return
     end
 
-    result = book.already_exists(book.isbn, book.author)
+    result = book.already_exists(book.isbn)
 
     if result == -1 && book.valid?
       book.save

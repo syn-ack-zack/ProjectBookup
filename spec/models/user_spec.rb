@@ -58,7 +58,6 @@ describe User do
       it {should_not be_valid}
    end
    
-   #TODO ask if this and the next one is a valid test
    describe 'when userid is not unique' do
       before{@user.userid = 'shareef'}
       it {should_not be_valid}
@@ -85,7 +84,6 @@ describe User do
       it {should_not be_valid}
    end
    
-   #TODO ask if this is a valid test 
    describe 'when password is  multiple words' do
       before { @user.password = 'what is up'}
       it {should_not be_valid}
