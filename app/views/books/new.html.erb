@@ -27,17 +27,17 @@
         <br>
 
         <%= form_for(:book, url: books_path) do |f| %>
-          <%= f.label :isbn %>
+          <%= f.label :isbn %>* (Must begin with 978)
           <%= f.text_field :isbn, class: "form-control"%>
 
           <br>
 
-          <%= f.label "Book Name" %>
+          <%= f.label "Book Name" %>*
           <%= f.text_field :name, class: "form-control"%>
 
           <br>
 
-          <%= f.label "Author" %>
+          <%= f.label "Author" %>*
           <%= f.text_field :author, class: "form-control"%>
 
           <br>

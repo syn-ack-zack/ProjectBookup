@@ -1,0 +1,20 @@
+<div id = "b1thumb" class="col-sm-6 col-md-3">
+  <div class="thumbnail">
+    <%= image_tag "defbook.jpg" %>
+    <div class="caption text-center">
+      <h3> 
+      <%= link_to book.name, :controller => 'books', :action => 'show', id: book %>
+      </h3>
+
+      <p> <%= book.author %> </p>
+      <p>
+      <%= link_to "I like it!",  
+       { :controller=>'books', :action=>'like_book'}, :remote => true ,
+      :method => :put, :class => 'btn btn-success' %>
+
+      <!-- <a class="btn btn-success" role="button">I like it!</a> -->
+      <a name = "nolike" class="btn btn-danger" role="button">Don't like it</a>
+      </p>
+    </div>
+  </div>
+</div>
