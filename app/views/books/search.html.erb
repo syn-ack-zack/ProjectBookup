@@ -34,7 +34,7 @@
           <h3 class="whiteHeader">Search Results</h3>
           <h4 class="subheader"> <%= @query %> </h4>
             <!--add book div with button linking to /books/new-->
-          <div class="alert alert-success alert-dismissable centerdamnbutton">
+          <div class="alert small alert-success alert-dismissable centerdamnbutton">
               <p>Not seeing a book you like?</p>
               <!--add book button, links to books/new-->
               <p><%= link_to "Add a book!", {:controller => 'books', :action => 'new'},
