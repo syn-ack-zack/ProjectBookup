@@ -39,25 +39,9 @@ describe Book do
 
    end
 
-   describe 'when the name is not unique' do
-      before {
-         @secondBook.name = 'cats'
-         @book.name = 'cats'
-      }
-      it {should_not be_valid}
 
-   end
-
-   describe 'when the name length is one' do
-      before {
-         @book.name = 'c'
-      }
-      it {should_not be_valid}
-
-   end
-   
    20.times do |i|
-      describe "when the name length is valid (#{i + 2}  characters)" do
+      describe "when the name length is valid (#{i + 1}  characters)" do
          before {
             @book.name = "c" * (i + 2)
          } 
@@ -90,16 +74,8 @@ describe Book do
       it {should_not be_valid}
    end
 
-   describe 'when the author name is one character long' do
-      before {
-         @book.author = 'c'
-      }
-      it {should_not be_valid}
-     
-   end 
-
    34.times do |i|
-      describe "when the author name is valid (#{i+2} characters)" do
+      describe "when the author name is valid (#{i+1} characters)" do
          before {
             @book.author = "c" * (i + 2)
          }
@@ -120,16 +96,27 @@ describe Book do
    describe 'when the isbn is 13 characters long' do
       before {
          @book.author = "Commadore perry"
-         @book.isbn = "9193915811918"
+         @book.isbn = "9783915811918"
       }         
       it {should be_valid}
+
+   end
+   
+   describe 'when the isbn is not unique' do
+      before {
+         @secondBook.isbn = "9783915811918"
+         @secondBook.save
+         @book.isbn = "9783915811918"
+         @book.save
+      }         
+      it {should_not be_valid}
 
    end
 
    describe 'when the isbn is not 13 characters long (12)' do
       before {
          @book.author = "Commadore perry"
-         @book.isbn = "919391581191"
+         @book.isbn = "978391581191"
       }         
       it {should_not be_valid}
    end
@@ -137,7 +124,7 @@ describe Book do
    describe 'when the isbn is not 13 characters long (14)' do
       before {
          @book.author = "Commadore perry"
-         @book.isbn = "91939158119191"
+         @book.isbn = "97839158119191"
       }         
       it {should_not be_valid}
    end
@@ -145,7 +132,7 @@ describe Book do
    describe 'when the isbn contains non numeric characters' do 
       before {
          @book.author = "Commadore perry"
-         @book.isbn = "91939158119a1"
+         @book.isbn = "97839158119a1"
       }         
       it {should_not be_valid}
    end
