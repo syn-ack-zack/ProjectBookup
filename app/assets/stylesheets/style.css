@@ -33,6 +33,13 @@ body {
 	margin: 30px;
 }
 
+.subheaderaqualeft {
+	color: #3BAFDA;
+	font-weight: 300;
+	font-size: 36pt;
+	margin: 10px;
+}
+
 .aquaground {
 	background-color: #3BAFDA;
 	margin: 0 auto;
@@ -66,4 +73,12 @@ body {
 
 .alert-dismissable{
 	text-align: center;
+}
+
+.iamwhitebox {
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
