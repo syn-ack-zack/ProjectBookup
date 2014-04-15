@@ -105,9 +105,11 @@ describe Book do
    describe 'when the isbn is not unique' do
       before {
          @secondBook.isbn = "9783915811918"
+         @secondBook.save
          @book.isbn = "9783915811918"
+         @book.save
       }         
-      it {should be_valid}
+      it {should_not be_valid}
 
    end
 
