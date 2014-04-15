@@ -115,7 +115,7 @@ User.create(userid: 'BevDurante', password: 'j9kvGa8v', favbook: 'Wuthering Heig
 User.create(userid: 'LaurelBryne', password: 'ZBFBTJhn', favbook: 'The Stranger', favauthor: 'Albert Camus')
 User.create(userid: 'RanaGaynor', password: 'cvXpLVVB', favbook: 'Poems', favauthor: 'Paul Celan')
 User.create(userid: 'BrindaScally', password: 'CaWu5U3c', favbook: 'Journey to the End of the Night', favauthor: 'Louis-Ferdinand Céline')
-User.create(userid: 'MattRitter', password: 'ASCIIDIK', favbook: 'The Cat in the Hat', favauthor: 'Dr. Seuss')
+User.create(userid: 'MattRitter', password: 'BookupRules', favbook: 'The Cat in the Hat', favauthor: 'Dr. Seuss')
 User.create(userid: 'JadwigaTosi', password: 'wmYa6VNc', favbook: 'The Canterbury Tales', favauthor: 'Geoffrey Chaucer')
 User.create(userid: 'SherikaPrado', password: 'p6LUaDDH', favbook: 'Stories', favauthor: 'Anton Chekhov')
 users = User.all
