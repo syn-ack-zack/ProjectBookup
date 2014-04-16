@@ -26,7 +26,7 @@ def create
     if user.already_exists(user.userid, user.password) == -1 && user.valid?
       user.save
       session[:remember_token] = user.id
-      render 'profile'
+      redirect_to  action: 'profile', controller: 'users'
       flash[:notice] = ""
       return
    #If the UserId is already in the database, render the page and show an error
