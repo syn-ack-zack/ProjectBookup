@@ -62,6 +62,12 @@ The difference between flat and SQL databases was explained a bit more by workin
 7. You can add a book if it isn't already in the bookup database.
 
 ----
+# rspec tests
+In spec/models, there are validation tests for the model. The first one book\_spec  tests the book model and the second one user\_spec tests the user model.
+
+In spec/requests, there are tests that test the links between pages in the web app. The first half of the tests test when the user is not logged in, and the second half of the tests test when the user is logged in.
+
+----
 # Executing rpsec tests
 
 1. $ rake db:migrate
