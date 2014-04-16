@@ -7,22 +7,111 @@ describe "in the  user controllers," do
   
    #TESTS FOR LOGGED OUT 
    pages = ['/', '/signup', '/login'] 
-   links = {"About" => '/', "Bookup" => '/', "Sign Up" => '/signup', "Log In" => '/login' }
+   #TODO change 'log in' thing
+   links = {"About" => '/', "Bookup" => '/', "Sign Up" => '/signup',"Want to try it out?" => 'signup', "Log in" => '/login' }
+   #iterate through each page
    pages.each do |p|
+      #visit the page
       before { visit p } 
       describe "when you're in the #{p} page and you click on the"  do 
+         #visit each of the links
          links.each do |buttonName, url|  
-            it "#{buttonName} link" do
-               click_link buttonName
-               if    url == '/' 
-               elsif url == '/signup'
-               elsif url == '/login'
+            it "#{buttonName} link to the #{url} page" do
+               #check if the page even has the link
+               if page.has_content?(buttonName) 
+                  click_link buttonName
+               if     url == '/' 
+                  #do splash page tests
+                  expect(page).to have_content 'Welcome to Bookup Let us find your next book, in the simplest way possible.'
+                  expect(page).to have_content 'How Do We Do It?'
+                  expect(page).to have_content 'All you have to do is tell us the books you Like or Dislike!'
+                  expect(page).to have_xpath "//img[@src='/assets/stackbook.png']"
+                  expect(page).to have_content 'Save Time Spend your free time reading rather than searching'
+                  expect(page).to have_xpath "//img[@src='/assets/openbook.png']"
+               elsif    url == '/signup' 
+                  #do signup page tests
+                  ids = ['user_username', 'user_password', 'user_confirmpassword', 'user_favbook', 'user_favauthor','user_favgenre', 'user_aboutme']
+                  types = ['text', 'password', 'password', 'text','text', 'text', 'submit']
+                  classes = ['form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'form-control', 'btn btn-primary'  ]
+                  #TODO change Lets
+                  expect(page).to have_content 'Thank you for trying Bookup Lets find you a book'
+                  6.times do | i |
+                     expect(page).to have_xpath "//form/input[#{i + 1}][@id = '#{ids[i]}']"
+                  end 
+                  7.times do |i|
+                     expect(page).to have_xpath "//form/input[#{i + 1}][@type = '#{types[i]}']"
+                  end
+
+                  7.times do |i|
+                    expect(page).to have_xpath "//form/input[#{i + 1}][@class = '#{classes[i]}']"
+                  end                 
+               elsif    url == '/login' 
+                  #do login page tests
+                  
+                  ids = ['session_username', 'session_password']
+                  types = ['text', 'password', 'submit']
+                  classes = ['form-control', 'form-control', 'btn btn-primary'  ]
+
+                  expect(page).to have_content "Welcome back to Bookup Lets find you a book"
+                  2.times do | i |
+                     expect(page).to have_xpath "//form/input[#{i + 1}][@id = '#{ids[i]}']"
+                  end 
+                  3.times do |i|
+                     expect(page).to have_xpath "//form/input[#{i + 1}][@type = '#{types[i]}']"
+                  end
+
+                  3.times do |i|
+                    expect(page).to have_xpath "//form/input[#{i + 1}][@class = '#{classes[i]}']"
+                  end                 
+
+               end
                end
             end
          end
       end
    end
    #TESTS FOR LOGGED IN 
+   pages = [] 
+   
+   links = {}
+   #first, we need to log in
+
+   before {
+      @user = User.new( userid: 'iankropp', password: 'capybara', favbook: 'iRobot', aboutme: 'I am tired', favauthor: 'Twain', favgenre:'funnies' )
+      visit '/login'
+      fill_in 'Username', :with => 'iankropp'
+      fill_in 'Password', :with => 'capybara'
+      click_link 'Log in'
+   } 
+   describe "when you succesfully log in," do 
+      it "shoud get the profile page" do 
+         expect(page).to have_content "Your Recommendations"
+      end 
+   end 
+
+   #iterate through each page
+   pages.each do |p|
+      #visit the page
+      before { visit p } 
+      describe "when you're in the #{p} page and you click on the"  do 
+         #visit each of the links
+         links.each do |buttonName, url|  
+            it "#{buttonName} link to the #{url} page" do
+               #check if the page even has the link
+               if page.has_content?(buttonName) 
+                  click_link buttonName
+                  if     url == '/' 
+              
+                  elsif    url == '/signup' 
+             
+                  elsif    url == '/login' 
+         
+               end
+               end
+            end
+         end
+      end
+   end
 
 #
 #   #SIGN UP PAGE
@@ -112,7 +201,7 @@ describe "in the  user controllers," do
 #         end
 #
 #         7.times do |i|
-#            expect(page).to have_xpath "//form/input[#{i + 1}][@class = '#{classes[i]}']"
+#           expect(page).to have_xpath "//form/input[#{i + 1}][@class = '#{classes[i]}']"
 #         end
 #      end 
 #   end
