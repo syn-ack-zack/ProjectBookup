@@ -61,6 +61,14 @@ The difference between flat and SQL databases was explained a bit more by workin
 6. Profile will show your suggested books, by liking and disliking them you will gradually update the suggested books.
 7. You can add a book if it isn't already in the bookup database.
 
+----
+# Executing rpsec tests
+
+1. $ rake db:migrate
+2. $ rake test:prepare
+3. $ rspec spec/models/user_spec.rb
+
+
 ---
 # Contributions
 
