@@ -66,7 +66,7 @@ The difference between flat and SQL databases was explained a bit more by workin
 
 1. $ rake db:migrate
 2. $ rake test:prepare
-3. $ rspec spec/models/user_spec.rb
+3. $ rspec spec/
 
 
 ---
