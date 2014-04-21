@@ -1,6 +1,11 @@
 # Bookup
 A web application for finding a book to read based on likes and dislikes. Simply 'like' or 'dislike' a few books and recommendations will come in. 
 
+This was used for a  Web Apps Project course at The Ohio State University. 
+
+It may not be used in any way for an assignment related to The Ohio State University. 
+
+
 ----
 
 ### Group Members 
