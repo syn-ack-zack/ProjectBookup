@@ -3,7 +3,8 @@ A web application for finding a book to read based on likes and dislikes. Simply
 
 This was used for a  Web Apps Project course at The Ohio State University. 
 
-It may not be used in any way for an assignment related to The Ohio State University. 
+**If you are associated with the Ohio State Univeristy in any way (Student, facualty, etc.), this code is not to be used for classes. Simple do not use it. Don't even look at it. You will be commiting academic misconduct which could result in being expected.... which would suck.**
+
 
 
 ----
